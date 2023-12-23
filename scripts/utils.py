@@ -51,12 +51,8 @@ def connect_to_db(config_file, section):
     """
     Crea una conexión a la base de datos especificada en el archivo de configuración.
 
-    Parameters:
-    config_file (str): La ruta del archivo de configuración.
-    section (str): La sección del archivo de configuración que contiene los datos de la base de datos.
-
-    Returns:
-    sqlalchemy.engine.base.Engine: Un objeto de conexión a la base de datos.
+    @config_file: La ruta del archivo de configuración.
+    @section: La sección del archivo de configuración que contiene los datos de la base de datos.
     """
     try:
         parser = ConfigParser()
@@ -89,11 +85,8 @@ def load_to_sql(df, engine):
     Cargar un dataframe en una tabla de base de datos,
     usando una tabla intermedia o stage para control de duplicados.
 
-    Parameters:
-    df (pandas.DataFrame): El DataFrame a cargar en la base de datos.
-    table_name (str): El nombre de la tabla en la base de datos.
-    engine (sqlalchemy.engine.base.Engine): Un objeto de conexión a la base de datos.
-    check_field (str): El nombre de la columna que se usará para controlar duplicados.
+    @Dataframe
+    @Motor para hacer la conexion a la db.
     """
     conn = engine.connect()
     df.to_sql(name="api",
